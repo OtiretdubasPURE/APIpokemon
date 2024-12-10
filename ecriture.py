@@ -3,7 +3,7 @@ import markdown
 
 def ecr_test(filename: str, fichier_ou_ecrire: str):
     """
-    cette fonction prend en parametre un fichier mardown 
+    cette fonction prend en parametre un fichier markdown 
     et ecris dans un fichier traduit en html
     """
     
