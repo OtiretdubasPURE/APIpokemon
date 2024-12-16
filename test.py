@@ -4,7 +4,7 @@ import markdown
 def download_poke(id :int):
     '''cette fonctoin prend en argument un id et renvoie les informations sur un pokemon'''
     
-    response = requests.get("https://pokeapi.co/api/v2/pokemon/" + str(id))
+    response = requests.get("https://pokeapi.co/api/v2/pokemon-species/" + str(id))
     data = response.json()
     return data
 

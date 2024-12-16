@@ -6,15 +6,16 @@ Prends en valeur d'entrée un nom de pokemon (ou un id)
 
 import markdown
 import requests
+from dictionnaire import dict_trad
 
-id = int(input("entrer un id de pokemon: "))
-nom_fichier = str(input("entrer un nom pour un fichier: "))+".md"
+nom_poke = str(input("entrer un nom de pokemon (avec une majuscule et en français): "))
+nom_fichier = nom_poke+".md"
 
 
-def download_poke(identifiant :int):
+def download_poke(nom_poke :int ,dict_trad):
     '''cette fonctoin prend en argument un id et renvoie les informations sur un pokemon'''
-    
-    response = requests.get("https://pokeapi.co/api/v2/pokemon/" + str(identifiant))
+
+    response = requests.get("https://pokeapi.co/api/v2/pokemon/" + str(dict_trad[nom_poke]))
     data = response.json()
     return data
 
@@ -26,4 +27,4 @@ def output_list_md(data, nom_fichier:str):
     return nom_fichier
 
 
-output_list_md(download_poke(id), nom_fichier)
+output_list_md(download_poke(id, dict_trad), nom_fichier)
