@@ -1,4 +1,9 @@
-dict_trad = {'Bulbizarre': 1,
+"""
+Ce fichier python contient un dictionnaire permettant d'acceder à son id correspondante.
+"""
+
+
+dict_trad = {'Bulbizarre': 1, 
  'Herbizarre': 2,
  'Florizarre': 3,
  'Salamèche': 4,
