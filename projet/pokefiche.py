@@ -1,6 +1,13 @@
 """
-Ce script python affiche des statisques dans une fichier au format html.
-Prends en valeur d'entrée un nom de pokemon (ou un id)
+Ce script python crée un fichier htlm avec différentes statistiques sur un pokémon.
+Prends en valeur d'entrée un nom de pokemon en Français.
+
+ATTENTION:
+Ce script à été developpé sous linux. Des problèmes ont été rencontrés quand à l'exécution
+sous Windows, due à des soi-disant versions différentes de python. 
+
+(source: un forum sur stack overflow):
+"https://stackoverflow.com/questions/50401632/f-strings-giving-syntaxerror"
 """
 
 
