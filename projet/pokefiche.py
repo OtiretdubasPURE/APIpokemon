@@ -61,7 +61,7 @@ def output_list_md(data, data_trad, nom_fichier:str):
         f.write(f"## Description: \n")
         f.write(f"{data_trad["flavor_text_entries"][87]["flavor_text"]} \n")
         f.write(f"{nom_poke} est un pokemon de la {data_trad["generation"]["name"]}   \n")
-        f.write(f"## Voici le cri de {nom_poke}:   \n")
+        #f.write(f"## Voici le cri de {nom_poke}:   \n")
         f.write(f"![Audio]({data["cries"]["latest"]})")
     return nom_fichier
 

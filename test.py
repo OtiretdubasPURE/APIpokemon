@@ -1,6 +1,6 @@
 import requests
 import markdown
-
+from dictionnaire import dict_trad
 def download_poke(id :int):
     '''cette fonctoin prend en argument un id et renvoie les informations sur un pokemon'''
     
@@ -41,3 +41,15 @@ def moyenne(data):
 
 def test(texte: str):
     return markdown.markdown("texte")
+
+
+
+
+def createur_dico(dict):
+    """
+    retourne un dictionnaire invérsé (argument[clé])
+    """
+    nouveau_dico = {}
+    for e in dict_trad:
+        nouveau_dico[dict[e]] = e
+    print(nouveau_dico)
