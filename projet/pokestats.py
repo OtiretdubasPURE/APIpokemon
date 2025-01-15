@@ -16,7 +16,7 @@ range1 = int(input("entrer un indice de pokemon. (par exemple de 1):  "))
 print(f" \n")
 range2 = int(input("entrer un deuxieme indice de pokemon, plus grand que le premier indice.(jusqu'à 1000):  "))
 
-
+nom_fichier = str(input("Entrer un nom de fichier pour la collecte des données:  "))
 
 def download_tous_poke(range1, range2):
     '''cette fonction prend en argument une range d'identifients de Pokémon et renvoie des données.'''
@@ -77,19 +77,51 @@ def plus_petit_grand_imc(infos_poke):
     return (maxi, maxi_val, mini, mini_val)
 
 
+def output_list_md(données, nom_fichier:str):
+    """
+    Cette fonction prends en paramètres des données sur un pokemon et un nom de fichier et
+    créer un fichier contenant des informations sur le pokemon.
+    Par exemple le Type, une image ect...
+    """
+    
+    
+    with open(nom_fichier, 'w') as f:
+        f.write(f"# Bonjour, cette page contient l'IMC et le taux de capture de tout les pokemon compris dans l'écart qui vous a été demandé au début. \n")
+        f.write(f"### Le pokemon avec le plus grand IMC est {dict_trad_inversé[resultats_finaux[0]]} avec un IMC de {resultats_finaux[1]}. \n")
+        f.write(f"### A contrario le pokemon avec le plus petit IMC est {dict_trad_inversé[resultats_finaux[2]]} avec un IMC de {resultats_finaux[3]}. \n")
+        f.write(f"## Voici maintenant l'IMC ainsi que le taux de capture:   \n")
+        for i in range(range1, range2):
+            f.write(f"IMC de {dict_trad_inversé[i]}: {données[i][3]}.    Son taux de capture: {données[i][2]} \n")
+    return nom_fichier + ".md"
 
+
+def ecriture_html(filename: str, fichier_ou_ecrire: str):
+    """
+    cette fonction prend en parametre un fichier markdown 
+    et crée un fichier html à partir ce ce fichier markdown.
+    """
+    
+    
+    
+    with open(filename, 'r') as f :
+        text = f.read()
+    html = markdown.markdown(text)
+    with open(fichier_ou_ecrire, 'w') as f :
+        f.write(html)
+    
 
 
 
 #partie script:
-
+#calculs et requetes:
 données1 = download_tous_poke(range1, range2)
 infos_poke = download_tous_poke_species(range1, range2, données1)
 infos_poke_imc = calcul_imc(infos_poke)
 resultats_finaux = plus_petit_grand_imc(infos_poke_imc)
 
-print(f"Le pokemon avec le plus grand IMC est {dict_trad_inversé[resultats_finaux[0]]} avec un IMC de {resultats_finaux[1]}. \n")
-print(f"A contrario le pokemon avec le plus petit IMC est {dict_trad_inversé[resultats_finaux[2]]} avec un IMC de {resultats_finaux[3]}.")
+#fichier md et html:
+
+output_list_md()
 
 
 
