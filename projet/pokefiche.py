@@ -34,8 +34,9 @@ def download_poke_trad(identifiant):
     cette fonctoin prend en argument un id et renvoie les informations sur un pokemon
     '''
 
-    response = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{identifiant}")     #pour avoir des données cette fois traduite
-                                                                                    #supplémentaires
+    response = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{identifiant}")     
+    #pour avoir des données cette fois traduite
+    #supplémentaires
     data_trad = response.json()
     return data_trad
 
