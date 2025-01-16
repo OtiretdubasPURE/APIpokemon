@@ -15,14 +15,16 @@ import markdown
 import requests                        #importation des modules pour que le script fonctionne
 from dictionnaire import dict_trad     #module pour pouvoir acceder au fichier dict_trad depuis dictionaire.py
 
+#initialisation des valeurs requises pour le script.
+
 
 nom_poke = str(input("entrer un nom de pokemon (avec une majuscule et en français): "))   
 id = dict_trad[nom_poke]
-nom_fichier = nom_poke +".md"        #initialisation des valeurs requises pour le script.
+nom_fichier = nom_poke +".md"        
 
 
 def download_poke(identifiant):
-    '''cette fonctoin prend en argument un id et renvoie les informations sur un pokemon'''
+    '''cette fonction prend en argument un id et renvoie les informations sur un pokemon'''
 
     response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{identifiant}")
     data = response.json()
@@ -31,7 +33,8 @@ def download_poke(identifiant):
 
 def download_poke_trad(identifiant):
     '''
-    cette fonctoin prend en argument un id et renvoie les informations sur un pokemon
+    cette fonction prend en argument un id et renvoie les informations sur un pokemon
+    -pour avoir des données traduites supplémentaires
     '''
 
     response = requests.get(f"https://pokeapi.co/api/v2/pokemon-species/{identifiant}")     
@@ -47,8 +50,8 @@ def download_poke_trad(identifiant):
 def output_list_md(data, data_trad, nom_fichier:str):
     """
     Cette fonction prends en paramètres des données sur un pokemon et un nom de fichier et
-    créer un fichier contenant des informations sur le pokemon.
-    Par exemple le Type, une image ect...
+    crée un fichier contenant des informations sur le pokemon.
+    Par exemple le type, une image ect...
     """
     
     
