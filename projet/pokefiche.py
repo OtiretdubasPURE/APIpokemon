@@ -15,6 +15,10 @@ import markdown
 import requests                        #importation des modules pour que le script fonctionne
 from dictionnaire import dict_trad     #module pour pouvoir acceder au fichier dict_trad depuis dictionaire.py
 
+
+from functools import lru_cache     #Implementation d'un cache simple
+
+
 #initialisation des valeurs requises pour le script.
 
 
@@ -22,7 +26,7 @@ nom_poke = str(input("entrer un nom de pokemon (avec une majuscule et en frança
 id = dict_trad[nom_poke]
 nom_fichier = nom_poke +".md"        
 
-
+@lru_cache
 def download_poke(identifiant):
     '''cette fonction prend en argument un id et renvoie les informations sur un pokemon'''
 
@@ -30,7 +34,7 @@ def download_poke(identifiant):
     data = response.json()
     return data
 
-
+@lru_cache
 def download_poke_trad(identifiant):
     '''
     cette fonction prend en argument un id et renvoie les informations sur un pokemon

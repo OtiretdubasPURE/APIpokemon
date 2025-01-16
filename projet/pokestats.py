@@ -62,7 +62,7 @@ def calcul_imc(infos_poke: dict) -> dict:
     
    
     for i in range(range1, range2):
-        imc_e = ((infos_poke[i][0]) / 10) / ((infos_poke[i][1])/10)**2
+        imc_e = ((infos_poke[i][0]) / 10) // ((infos_poke[i][1])/10)**2
         infos_poke[i].append(imc_e)
 
     return infos_poke
@@ -78,19 +78,19 @@ def plus_petit_grand_imc(infos_poke: dict) -> tuple:
     
     
     
-    maxi_val = 0
+    maxi_imc = 0
     maxi = 0
-    mini_val = 0
+    mini_imc = infos_poke[0][3]
     mini = 0
     for i in range(range1, range2):
-        if infos_poke[i][3] > maxi_val:
-            maxi_val = infos_poke[i][3]
+        if infos_poke[i][3] > maxi_imc:
+            maxi_imc = infos_poke[i][3]
             maxi = i
-        if infos_poke[i][3] < maxi_val:
-            mini_val = infos_poke[i][3]
+        if infos_poke[i][3] < maxi_imc:
+            mini_imc = infos_poke[i][3]
             mini = i
 
-    return (maxi, maxi_val, mini, mini_val)
+    return (maxi, maxi_imc, mini, mini_imc)
 
 
 
