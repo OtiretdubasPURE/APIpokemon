@@ -8,9 +8,8 @@ Non testé sous windows.
 """
 
 import requests
-import markdown
 from dictionnaire import dict_trad_inversé
-
+from md_to_html import convert
 
 #Affichage de base du script
 
@@ -117,18 +116,6 @@ def output_list_md(données: dict, resultats: tuple, nom_fichier:str):
     return nom_md
 
 
-def ecriture_html(filename: str, nom_fichier: str):
-    """
-    cette fonction prend en parametre un fichier markdown 
-    et crée un fichier html à partir ce ce fichier markdown.
-    """
-    
-    
-    with open(filename, 'r') as f :
-        text = f.read()
-    html = markdown.markdown(text)
-    with open(nom_fichier + ".html", 'w') as f :
-        f.write(html)
     
 
 
@@ -144,7 +131,7 @@ resultats_finaux = plus_petit_grand_imc(infos_poke_imc)
 #fichier md et html:
 
 fichier_markdown = output_list_md(infos_poke_imc, resultats_finaux, nom_fichier)
-ecriture_html(fichier_markdown, nom_fichier)
+convert(fichier_markdown, nom_fichier + ".html")
 
 
 

@@ -11,12 +11,11 @@ sous Windows, due à des soi-disant versions différentes de python.
 """
 
 
-import markdown
 import requests                        #importation des modules pour que le script fonctionne
 from dictionnaire import dict_trad     #module pour pouvoir acceder au fichier dict_trad depuis dictionaire.py
+from md_to_html import convert
 
-
-from functools import lru_cache     #Implementation d'un cache simple
+#from functools import lru_cache     #Implementation d'un cache simple
 
 
 #initialisation des valeurs requises pour le script.
@@ -26,7 +25,7 @@ nom_poke = str(input("entrer un nom de pokemon (avec une majuscule et en frança
 id = dict_trad[nom_poke]
 nom_fichier = nom_poke +".md"        
 
-@lru_cache
+#@lru_cache
 def download_poke(identifiant):
     '''cette fonction prend en argument un id et renvoie les informations sur un pokemon'''
 
@@ -34,7 +33,7 @@ def download_poke(identifiant):
     data = response.json()
     return data
 
-@lru_cache
+#@lru_cache
 def download_poke_trad(identifiant):
     '''
     cette fonction prend en argument un id et renvoie les informations sur un pokemon
@@ -76,24 +75,10 @@ def output_list_md(data, data_trad, nom_fichier:str):
 
 
 
-def ecriture_html(filename: str, fichier_ou_ecrire: str):
-    """
-    cette fonction prend en parametre un fichier markdown 
-    et crée un fichier html à partir ce ce fichier markdown.
-    """
-    
-    
-    
-    with open(filename, 'r') as f :
-        text = f.read()
-    html = markdown.markdown(text)
-    with open(fichier_ou_ecrire, 'w') as f :
-        f.write(html)
-
-
 
 #appel des fonctions:
 données = download_poke(id)
+print(données)
 données_trad = download_poke_trad(id)
 fichier_markdown = output_list_md(données, données_trad, nom_fichier) 
-ecriture_html(fichier_markdown, nom_poke+".html")
+convert(fichier_markdown, nom_poke+".html")
