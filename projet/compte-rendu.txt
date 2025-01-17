@@ -6,21 +6,21 @@ Coeuret Tristan et Esteves Julien
 
 -Pokefiche:
     Nos choix:
-        -Pour la Pokefiche nous avons décidé dans un premier temps d'afficher un image du Pokemon. L'image choisi parmis toutes celles disponibles 
+        -Pour la Pokefiche nous avons décidé dans un premier temps d'afficher une image du Pokemon. L'image choisie parmi toutes celles disponibles 
         est celle du dessin officiel, asser détaillé et asser grande à notre goût.
     
-        -Ensuite nous avons prit la décision d'afficher les statistiques du Pokémon (Points de vies, défense, ect).
+        -Ensuite nous avons pris la décision d'afficher les statistiques du Pokémon (Points de vies, défense, ect).
         Au moment de l'écriture de ce compte rendu les statistiques sont écrites en anglais malheureusement.
 
         -Enfin en dernière partie est affiché la description du Pokédex en Français cette fois-ci.
 
-    Difficultées rencontrées:
+    Difficultés rencontrées:
         
-        -Nous avons mit du temps à trouver certaines données traduites. Le seul moyen pour nous était de faire un autre requête vers une autre partie de 
+        -Nous avons mis du temps à trouver certaines données traduites. Le seul moyen pour nous était de faire une autre requête vers une autre partie de 
         l'API.
         
-        -On trouvait vraiment intéressant de pouvoir entrer directement un nom de Pokémon en Français pour l'éxecution du script, même si cela a prit un peu de temps. 
-        On y est parvenu grâce à un fichier python qui contient deux dictionnaire. Les noms était associés dans le dictionnaire avec l'identifiant, 
+        -On trouvait vraiment intéressant de pouvoir entrer directement un nom de Pokémon en Français pour l'éxecution du script, même si cela a pris un peu de temps. 
+        On y est parvenu grâce à un fichier python qui contient deux dictionnaires. Les noms étaient associés dans le dictionnaire avec l'identifiant, 
         ce qui permettait de faire les requêtes avec des noms Français.
 
 
@@ -28,11 +28,11 @@ Coeuret Tristan et Esteves Julien
     
     Nos choix:
         
-        -Nous avons mis en place un systeme d'intervalle pour que l'utilisateur puisse choisir de combien de Pokémon tirer les statistiques.
+        -Nous avons mis en place un système d'intervalle pour que l'utilisateur puisse choisir de combien de Pokémon tirer les statistiques.
         
         -En cherchant dans l'API nous avons récupéré la taille, le poids ainsi que le taux de capture du Pokémon.
         Avec la taille et le poids nous avons calculé l'IMC de ce pokémon.
-        Grâce à ces données nous pouvons trouver le Pokémon avec le plus petit et plus grand IMC et le comparer avec le taux de capture pour vérifier
+        Grâce à ces données nous pouvons trouver le Pokémon avec le plus petit et le plus grand IMC et le comparer avec le taux de capture pour vérifier
         si un Pokémon avec un grand IMC a un taux de capture plus faible (et inversement).
 
         -Les données de l'API sont stockées dans un dictionnaire avec comme clé l'identifiant du Pokémon.
@@ -41,16 +41,16 @@ Coeuret Tristan et Esteves Julien
 
     Difficultées rencontrées:
 
-    -Il était plus facile de faire ce script puisque la majorité des fonctions était faites dans pokefiche.
+    -Il était plus facile de faire ce script puisque la majorité des fonctions étaient faites dans pokefiche.
 
     -Le plus long à été de savoir comment stocker nos informations pour bien les utiliser après.
 
 
 Ce que le projet nous a appris:
 
-    -L'importance de bien diviser nos fonctions en sous fonctions, ce qui n'a pas bien été réalisé pour pokestats à notre sens.
+    -L'importance de bien diviser nos fonctions en sous-fonctions, ce qui n'a pas bien été réalisé pour pokestats à notre sens.
     
-    -Séparer certaines fonctions utilisable par plusieurs scripts en les importants dans nos script. (md_to_html.py)
+    -Séparer certaines fonctions utilisables par plusieurs scripts en les importants dans nos scripts. (md_to_html.py)
     
     -Apprendre à utiliser une API même basique pour débuter
     
@@ -58,7 +58,7 @@ Ce que le projet nous a appris:
 
 
 
-Au moment de l'écriture de ce compte-rendu out est terminé. pokestats et pokefiche marchent parfaitement. Il ne manque qu'une relecture du code pour enlever
+Au moment de l'écriture de ce compte-rendu tout est terminé. pokestats et pokefiche marchent parfaitement. Il ne manque qu'une relecture du code pour enlever
 certaines lignes inutiles, ajouter des descriptions aux endroits pertinents, et verifier l'orthographe.
 
 (Ce fichier est en .txt pour des raisons de compatibilité avec ecampus)
