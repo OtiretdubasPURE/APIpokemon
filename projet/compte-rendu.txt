@@ -1,0 +1,28 @@
+Compte-rendu SAE15
+Coeuret Tristan et Esteves Julien
+
+
+Nos choix:
+    -Pokefiche:
+
+    Pour la Pokéfiche nous avons décidés dans un premier temps d'afficher un image du Pokemon. L'image choisi parmis toutes celles disponibles 
+    est celle du dessin officiel, asser jolie et asser grande à notre goût.
+    
+    Ensuite nous avons prit la décision d'afficher les statistiques du Pokémon (Points de vies, défense, ect).
+    Au moment de l'écriture de ce compte rendu les statistiques sont écrites en anglais malheureusement.
+
+    Enfin en dernière partie est affiché la description du Pokédex en Français cette fois-ci.
+
+    Difficultées rencontrées:
+        -Nous avaons mit du temps à trouver certaines données traduites. Le seul moyen pour nous était de faire un autre requête vers une autre partie de 
+        l'API.
+        -On trouvait vraiment intéressant de pouvoir entrer directement un nom de Pokémon en Français pour l'éxecution du script, même si cela a prit un peu de temps. 
+        On y est parvenu grâce à un fichier python avec deux dictionnaire. Les noms était associés dans le dictionnaire avec l'identifiant, ce qui permettait de faire
+        les requêtes avec des noms Français.
+    
+
+
+    -Pokestats:
+        
+
+

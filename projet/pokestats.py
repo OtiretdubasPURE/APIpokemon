@@ -25,7 +25,7 @@ nom_fichier = str(input("Entrer un nom de fichier pour la collecte des données:
 
 
 
-def download_tous_poke(range1: int, range2: int):
+def get_dataset(range1: int, range2: int):
     '''cette fonction prend en argument une intervalle d'identifients de Pokémon et renvoie des données.'''
 
     
@@ -39,7 +39,7 @@ def download_tous_poke(range1: int, range2: int):
     return données
 
 
-def download_tous_poke_species(range1: int, range2: int, données: dict) -> dict:
+def get_dataset_species(range1: int, range2: int, données: dict) -> dict:
     '''
     cette fonction prend en argument une intervalle d'identifients de Pokémon et renvoie des données.
     (pokemon-species)
@@ -51,20 +51,6 @@ def download_tous_poke_species(range1: int, range2: int, données: dict) -> dict
         data = response.json()
         données[i].append(data["capture_rate"])
     return données
-
-
-def calcul_imc(infos_poke: dict) -> dict:
-    """
-    Cette fonction prends en argument un dictionnaire avec des informations sur le pokemon. (hauteur, poids et taux de capture)
-    Elle rajoute à ce dictionnaire déjà existant l'imc de ce pokemon. (hauteur / taille²)
-    """
-    
-   
-    for i in range(range1, range2):
-        imc_e = ((infos_poke[i][0]) / 10) // ((infos_poke[i][1])/10)**2
-        infos_poke[i].append(imc_e)
-
-    return infos_poke
 
 
 def plus_petit_grand_imc(infos_poke: dict) -> tuple:
@@ -91,13 +77,26 @@ def plus_petit_grand_imc(infos_poke: dict) -> tuple:
 
     return (maxi, maxi_imc, mini, mini_imc)
 
+def compute_statistics(infos_poke: dict) -> dict:
+    """
+    Cette fonction prends en argument un dictionnaire avec des informations sur le pokemon. (hauteur, poids et taux de capture)
+    Elle rajoute à ce dictionnaire déjà existant l'imc de ce pokemon. (hauteur / taille²)
+    """
+    
+   
+    for i in range(range1, range2):
+        imc_e = ((infos_poke[i][0]) / 10) // ((infos_poke[i][1])/10)**2
+        infos_poke[i].append(imc_e)
+
+    return infos_poke
 
 
 
 
 
 
-def poke_to_md(données: dict, resultats: tuple, nom_fichier:str):
+
+def dataset_to_md(données: dict, resultats: tuple, nom_fichier:str):
     """
     Cette fonction prends en paramètres des données sur une intervalle de Pokemon pour créer jun fichier html avec:
     Le Pokemon avec le plus gros IMC et de même pour le plus petit IMC
@@ -123,14 +122,14 @@ def poke_to_md(données: dict, resultats: tuple, nom_fichier:str):
 #partie script:
 
 #calculs et requetes:
-données1 = download_tous_poke(range1, range2)
-infos_poke = download_tous_poke_species(range1, range2, données1)
-infos_poke_imc = calcul_imc(infos_poke)
+données1 = get_dataset(range1, range2)
+infos_poke = get_dataset_species(range1, range2, données1)
+infos_poke_imc = compute_statistics(infos_poke)
 resultats_finaux = plus_petit_grand_imc(infos_poke_imc)
 
 #fichier md et html:
 
-fichier_markdown = poke_to_md(infos_poke_imc, resultats_finaux, nom_fichier)
+fichier_markdown = dataset_to_md(infos_poke_imc, resultats_finaux, nom_fichier)
 convert(fichier_markdown, nom_fichier + ".html")
 
 
