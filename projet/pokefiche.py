@@ -6,24 +6,42 @@ ATTENTION:
 Ce script à été developpé sous linux. Des problèmes ont été rencontrés quand à l'exécution
 sous Windows, due à des soi-disant versions différentes de python. 
 
-(source: un forum sur stack overflow):
+(source: stack overflow):
 "https://stackoverflow.com/questions/50401632/f-strings-giving-syntaxerror"
+
+
+EXECUTION DU SCRIPT:
+
+Deux mannières possibles d'éxecuter ce script:
+-de mannière classique dans l'interpréteur python: %run pokefiche.py
+Le script vous demandera un nom de Pokémon.
+-Sinon en executant le programme avec: python3 pokefiche.py {identifiant de votre Pokémon}
+
 """
 
 
-import requests                        #importation des modules pour que le script fonctionne
-from dictionnaire import dict_trad     #module pour pouvoir acceder au fichier dict_trad depuis dictionaire.py
+import requests                                            #importation des modules pour que le script fonctionne
+from dictionnaire import dict_trad, dict_trad_inversé     #module pour pouvoir acceder au fichier dict_trad depuis dictionaire.py
 from md_to_html import convert
-
-#from functools import lru_cache     #Implementation d'un cache simple
+import sys
+#from functools import lru_cache                           #Implementation d'un cache simple
 
 
 #initialisation des valeurs requises pour le script.
 
 
-nom_poke = str(input("entrer un nom de pokemon (avec une majuscule et en français): "))   
-id = dict_trad[nom_poke]
-nom_fichier = nom_poke +".md"        
+if len(sys.argv) == 2:
+    id = sys.argv[1]
+    nom_poke = dict_trad_inversé[int(id)]
+else:
+    nom_poke = str(input("entrer un nom de pokemon (avec une majuscule et en français): ")) 
+    id = dict_trad[nom_poke]
+nom_fichier = nom_poke +".md"  
+
+
+
+
+
 
 #@lru_cache
 def download_poke(identifiant):
@@ -50,7 +68,7 @@ def download_poke_trad(identifiant):
 
 
 
-def output_list_md(data, data_trad, nom_fichier:str):
+def poke_to_md(data: dict, data_trad: dict, nom_fichier:str):
     """
     Cette fonction prends en paramètres des données sur un pokemon et un nom de fichier et
     crée un fichier contenant des informations sur le pokemon.
@@ -68,17 +86,26 @@ def output_list_md(data, data_trad, nom_fichier:str):
         f.write(f"## Description: \n")
         f.write(f"{data_trad["flavor_text_entries"][87]["flavor_text"]} \n")
         f.write(f"{nom_poke} est un pokemon de la {data_trad["generation"]["name"]}   \n")
-        #f.write(f"## Voici le cri de {nom_poke}:   \n")
-        f.write(f"![Audio]({data["cries"]["latest"]})")
     return nom_fichier
 
 
 
 
 
-#appel des fonctions:
-données = download_poke(id)
-print(données)
-données_trad = download_poke_trad(id)
-fichier_markdown = output_list_md(données, données_trad, nom_fichier) 
-convert(fichier_markdown, nom_poke+".html")
+def fiche_pokemon(id: int)-> None:
+
+
+
+    données = download_poke(id)
+    données_trad = download_poke_trad(id)
+    fichier_markdown = poke_to_md(données, données_trad, nom_fichier) 
+    convert(fichier_markdown, nom_poke+".html")
+    print(f"Fichiers créés avec succès!")
+
+
+fiche_pokemon(id)
+
+
+
+
+

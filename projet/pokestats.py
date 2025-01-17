@@ -97,7 +97,7 @@ def plus_petit_grand_imc(infos_poke: dict) -> tuple:
 
 
 
-def output_list_md(données: dict, resultats: tuple, nom_fichier:str):
+def poke_to_md(données: dict, resultats: tuple, nom_fichier:str):
     """
     Cette fonction prends en paramètres des données sur une intervalle de Pokemon pour créer jun fichier html avec:
     Le Pokemon avec le plus gros IMC et de même pour le plus petit IMC
@@ -130,7 +130,7 @@ resultats_finaux = plus_petit_grand_imc(infos_poke_imc)
 
 #fichier md et html:
 
-fichier_markdown = output_list_md(infos_poke_imc, resultats_finaux, nom_fichier)
+fichier_markdown = poke_to_md(infos_poke_imc, resultats_finaux, nom_fichier)
 convert(fichier_markdown, nom_fichier + ".html")
 
 

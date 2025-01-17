@@ -20,11 +20,16 @@ def convert(filename: str, fichier_ou_ecrire: str):
     with open(fichier_ou_ecrire, 'w') as f :
         f.write(html)
 
-fichier_markdown = sys.argv[1]
-fichier_html = sys.argv[2]                  
+
+
+if len(sys.argv) == 3:
+
+    fichier_markdown = sys.argv[1]
+    fichier_html = sys.argv[2]                 
+    convert(fichier_markdown,fichier_html)
+
 
 
 #explication: sys.argv est la liste des arguments données à l'éxecution du fichier. ressemble à ça:
 #["le dossier d'où se trouve ce fichier", "fichier_markdown.md", "fichier_html.html"]
 
-convert(fichier_markdown,fichier_html)
