@@ -1,28 +1,70 @@
 Compte-rendu SAE15
 Coeuret Tristan et Esteves Julien
+17 Janvier 2025
 
 
-Nos choix:
-    -Pokefiche:
 
-    Pour la Pokéfiche nous avons décidés dans un premier temps d'afficher un image du Pokemon. L'image choisi parmis toutes celles disponibles 
-    est celle du dessin officiel, asser jolie et asser grande à notre goût.
+-Pokefiche:
+    Nos choix:
+        -Pour la Pokefiche nous avons décidé dans un premier temps d'afficher un image du Pokemon. L'image choisi parmis toutes celles disponibles 
+        est celle du dessin officiel, asser détaillé et asser grande à notre goût.
     
-    Ensuite nous avons prit la décision d'afficher les statistiques du Pokémon (Points de vies, défense, ect).
-    Au moment de l'écriture de ce compte rendu les statistiques sont écrites en anglais malheureusement.
+        -Ensuite nous avons prit la décision d'afficher les statistiques du Pokémon (Points de vies, défense, ect).
+        Au moment de l'écriture de ce compte rendu les statistiques sont écrites en anglais malheureusement.
 
-    Enfin en dernière partie est affiché la description du Pokédex en Français cette fois-ci.
+        -Enfin en dernière partie est affiché la description du Pokédex en Français cette fois-ci.
 
     Difficultées rencontrées:
-        -Nous avaons mit du temps à trouver certaines données traduites. Le seul moyen pour nous était de faire un autre requête vers une autre partie de 
-        l'API.
-        -On trouvait vraiment intéressant de pouvoir entrer directement un nom de Pokémon en Français pour l'éxecution du script, même si cela a prit un peu de temps. 
-        On y est parvenu grâce à un fichier python avec deux dictionnaire. Les noms était associés dans le dictionnaire avec l'identifiant, ce qui permettait de faire
-        les requêtes avec des noms Français.
-    
-
-
-    -Pokestats:
         
+        -Nous avons mit du temps à trouver certaines données traduites. Le seul moyen pour nous était de faire un autre requête vers une autre partie de 
+        l'API.
+        
+        -On trouvait vraiment intéressant de pouvoir entrer directement un nom de Pokémon en Français pour l'éxecution du script, même si cela a prit un peu de temps. 
+        On y est parvenu grâce à un fichier python qui contient deux dictionnaire. Les noms était associés dans le dictionnaire avec l'identifiant, 
+        ce qui permettait de faire les requêtes avec des noms Français.
+
+
+-Pokestats:
+    
+    Nos choix:
+        
+        -Nous avons mis en place un systeme d'intervalle pour que l'utilisateur puisse choisir de combien de Pokémon tirer les statistiques.
+        
+        -En cherchant dans l'API nous avons récupéré la taille, le poids ainsi que le taux de capture du Pokémon.
+        Avec la taille et le poids nous avons calculé l'IMC de ce pokémon.
+        Grâce à ces données nous pouvons trouver le Pokémon avec le plus petit et plus grand IMC et le comparer avec le taux de capture pour vérifier
+        si un Pokémon avec un grand IMC a un taux de capture plus faible (et inversement).
+
+        -Les données de l'API sont stockées dans un dictionnaire avec comme clé l'identifiant du Pokémon.
+        Les données des Pokemons avec le plus grand et petit IMC sont dans un tuple.
+        La fonction dataset_to_md compile ces données en transformant l'identifiant du Pokémon en nom.
+
+    Difficultées rencontrées:
+
+    -Il était plus facile de faire ce script puisque la majorité des fonctions était faites dans pokefiche.
+
+    -Le plus long à été de savoir comment stocker nos informations pour bien les utiliser après.
+
+
+Ce que le projet nous a appris:
+
+    -L'importance de bien diviser nos fonctions en sous fonctions, ce qui n'a pas bien été réalisé pour pokestats à notre sens.
+    
+    -Séparer certaines fonctions utilisable par plusieurs scripts en les importants dans nos script. (md_to_html.py)
+    
+    -Apprendre à utiliser une API même basique pour débuter
+    
+    -créer un script plus évolué que ceux en bash (r108)
+
+
+
+Au moment de l'écriture de ce compte-rendu out est terminé. pokestats et pokefiche marchent parfaitement. Il ne manque qu'une relecture du code pour enlever
+certaines lignes inutiles, ajouter des descriptions aux endroits pertinents, et verifier l'orthographe.
+
+(Ce fichier est en .txt pour des raisons de compatibilité avec ecampus)
+
+
+
+
 
 

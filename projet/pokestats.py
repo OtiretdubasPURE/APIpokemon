@@ -2,23 +2,37 @@
 Bienvenue sur ce fichier python.
 Ce script crée une page html comprenant des données sur un intervalle de Pokemons. (de 1 à 1005)
 Il calcule l'IMC de tout ces Pokemons, puis trouve ceux avec le plus grand IMC.
-Enfin il affiche l'IMC de chaque pokemon ainsi que son taux de capture.
+Enfin il affiche l'IMC de chaque Pokemon ainsi que son taux de capture.
 
 Non testé sous windows.
+
+
+EXECUTION DU SCRIPT:
+-simplement lancer le script avec un interpréteur python.
+ex: python3 pokestats.py
+
 """
 
 import requests
 from dictionnaire import dict_trad_inversé
 from md_to_html import convert
 
+
+
+
 #Affichage de base du script
 
+print("Bonjour, vous allez devoir entrer une intervalle pour sélectionner les Pokémons qui seront utilisées pour les statistiques \n")
+print("Attention, prendre des nombres avec un écart trop grand prends beaucoup de temps. (jusqu'à 30min)")
+print(" \n")
 
-print("Attention, prendre des nombres avec un écart trop grabd prends beaucoup de temps. (jusqu'à 30min)")
-print(f" \n")
-range1 = int(input("entrer un indice de pokemon. (par exemple de 1):  "))
-print(f" \n")
-range2 = int(input("entrer un deuxieme indice de pokemon, plus grand que le premier indice.(jusqu'à 1000):  "))
+
+range1 = int(input("entrer un premier indice:  "))
+print(" \n")
+range2 = int(input("entrer un deuxieme indice plus grand que le premier indice.     (jusqu'à 1000):  "))
+assert range1 < range2, "le premier indice doit être inférieur au deuxième"
+assert range1 >= 1 and range2 <= 1005,"Vous devez choisir un intervalle supérieur à 0 et inférieur à 1005"
+
 
 nom_fichier = str(input("Entrer un nom de fichier pour la collecte des données:  "))
 
@@ -39,9 +53,10 @@ def get_dataset(range1: int, range2: int):
     return données
 
 
+
+
 def get_dataset_species(range1: int, range2: int, données: dict) -> dict:
-    '''
-    cette fonction prend en argument une intervalle d'identifients de Pokémon et renvoie des données.
+    '''ntervalle d'identifiants de Pokémon et renvoie des données.
     (pokemon-species)
     '''
 
@@ -65,17 +80,20 @@ def plus_petit_grand_imc(infos_poke: dict) -> tuple:
     
     maxi_imc = 0
     maxi = 0
-    mini_imc = infos_poke[0][3]
+    mini_imc = infos_poke[range1][3]
     mini = 0
     for i in range(range1, range2):
         if infos_poke[i][3] > maxi_imc:
             maxi_imc = infos_poke[i][3]
             maxi = i
-        if infos_poke[i][3] < maxi_imc:
+        if infos_poke[i][3] < mini_imc:
             mini_imc = infos_poke[i][3]
             mini = i
 
     return (maxi, maxi_imc, mini, mini_imc)
+
+
+
 
 def compute_statistics(infos_poke: dict) -> dict:
     """
